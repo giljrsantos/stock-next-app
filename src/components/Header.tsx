@@ -8,13 +8,13 @@ export default function Header(props: {title: string}){
             <h1>{ props.title }</h1>
             <div className='flex flex-row gap-2'>
                 <Button asChild variant="secondary">
-                    <Link href="/">Home</Link>
+                    <Link href="/">Início</Link>
                 </Button>
                 <Button asChild variant="secondary">
-                    <Link href="/categories">Categories</Link>
+                    <Link href="/categories">Categorias</Link>
                 </Button>
                 <Button asChild variant="secondary">
-                    <Link href="/products">Products</Link>
+                    <Link href="/products">Produtos</Link>
                 </Button>                                
             </div>
         </div>
