@@ -1,11 +1,16 @@
+import { PrismaClient } from "@prisma/client";
+
 interface PageParams {
     params: {
         id: string
     }
 }
 
-export default function page({params}: PageParams){
+export default async function page({params}: PageParams){
     const id = params.id;
+    const prisma = new PrismaClient();
 
-    return <div>id: {id}</div>
+    const category = await prisma.category.findUniqueOrThrow({where: {id}});
+
+    return <div>Id: {id} - Nome: { category.name }</div>
 }
