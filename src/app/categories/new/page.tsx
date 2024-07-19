@@ -1,10 +1,27 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { PrismaClient } from '@prisma/client';
+import { redirect } from 'next/navigation';
 
 export default function page(){
     async function createCategory(formData: FormData) {
         'use server'
-        console.log('Create Category with formData', formData)
+        //console.log('Create Category with formData', formData);
+
+        const formObject = Object.fromEntries(formData);
+
+        if(!formObject.name){
+            throw new Error('Name is required');
+        }
+
+        const prisma = new PrismaClient();
+        await prisma.category.create({
+            data: {
+                name: formObject.name as string
+            }
+        });
+
+        redirect('/categories');
     }
     return (
         <div>
