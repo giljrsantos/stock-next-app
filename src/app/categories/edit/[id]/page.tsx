@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import UpdateForm from "./form";
 
 interface PageParams {
     params: {
@@ -12,5 +13,11 @@ export default async function page({params}: PageParams){
 
     const category = await prisma.category.findUniqueOrThrow({where: {id}});
 
-    return <div>Id: {id} - Nome: { category.name }</div>
+    return (
+        <div>
+            Id: {id} - Nome: { category.name }
+            <br />
+            <UpdateForm />
+        </div>
+    )
 }
