@@ -1,16 +1,20 @@
 'use client'
 
-import { useState } from "react"
+import { useState } from "react";
 
-export default function UpdateForm(){
-    const [ count, setCount] = useState(0);
+interface UpdateFormProps {
+    data: {
+        id: string
+        name: string
+    }
+}
 
-    const handleClick = () => setCount(count + 1);
-
+export default function UpdateForm(props: UpdateFormProps){
+    const category = props.data;
+    
     return (
         <div>
-            <p>Você clicou { count } vez</p>
-            <button onClick={handleClick}>Clique em mim</button>
+            Formulário Categoria: { category.id } - {category.name}
         </div>
     )
 }
