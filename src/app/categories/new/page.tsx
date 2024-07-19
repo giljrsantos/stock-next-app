@@ -11,7 +11,7 @@ export default function page(){
         const formObject = Object.fromEntries(formData);
 
         if(!formObject.name){
-            throw new Error('Name is required');
+            throw new Error('O nome é obrigatório!');
         }
 
         const prisma = new PrismaClient();
