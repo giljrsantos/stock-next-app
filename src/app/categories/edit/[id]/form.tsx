@@ -13,13 +13,11 @@ interface UpdateFormProps {
 
 export default function UpdateForm(props: UpdateFormProps){
     const [name, setName] = useState(props.data.name);
+
     function handleChange(event: any){
         setName(event.target.value);
     }
-    const category = props.data;
 
-
-    
     return (
         <div>
             <form action={props.onSubmit}>
