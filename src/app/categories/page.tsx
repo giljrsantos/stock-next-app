@@ -18,11 +18,11 @@ export default async function page(){
     return (
         <div>
             <Table>
-                <TableCaption>A list of your categories.</TableCaption>
+                <TableCaption>Uma lista de suas categorias.</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead className="w-[100px] text-center">Actions</TableHead>
+                        <TableHead>Nome</TableHead>
+                        <TableHead className="w-[100px] text-center">Ação</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -32,10 +32,10 @@ export default async function page(){
                             <TableCell className="text-right">
                                 <div className="flex flex-row gap-2">
                                 <Button asChild variant="link">
-                                        <Link href={`/categories/edit/${category.id}`}>Edit</Link>
+                                        <Link href={`/categories/edit/${category.id}`}>Editar</Link>
                                     </Button>                                    
                                     <Button asChild variant="link">
-                                        <Link href={`/categories/del/${category.id}`}>Delete</Link>
+                                        <Link href={`/categories/del/${category.id}`}>Apagar</Link>
                                     </Button>
                                 </div>
                             </TableCell>
