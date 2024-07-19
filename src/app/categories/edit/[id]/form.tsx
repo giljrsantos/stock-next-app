@@ -4,6 +4,7 @@ import { useState } from "react";
 import Submit from "../../Submit";
 
 interface UpdateFormProps {
+    onSubmit: string | ((FormData: FormData) => void) | undefined;
     data: {
         id: string
         name: string
@@ -16,10 +17,12 @@ export default function UpdateForm(props: UpdateFormProps){
         setName(event.target.value);
     }
     const category = props.data;
+
+
     
     return (
         <div>
-            <form>
+            <form action={props.onSubmit}>
                 <input type="hidden" name="id" value={props.data.id} />
                 <label>
                     Nome:
