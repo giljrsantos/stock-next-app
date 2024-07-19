@@ -39,14 +39,16 @@ export default function page(){
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline min-w-[300px]" />
                     </div>
                     <div className="flex items-center justify-between">
+                        <Button asChild variant="outline">
+                            <Link href="/categories/new">Voltar</Link>
+                        </Button>                          
                         <Submit>Salvar</Submit>
+                      
                     </div>
                 </form>
             </div>
 
-            <Button asChild variant="outline">
-                <Link href="/categories/new">Voltar</Link>
-            </Button>
+
         </div>
     )
 }
