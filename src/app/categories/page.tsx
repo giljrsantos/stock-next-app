@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PrismaClient } from '@prisma/client';
@@ -21,6 +23,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
+import DeleteDialog from "@/components/delete-dialog/DeleteDialog";
 
 export default async function page(){
     const prisma = new PrismaClient();
@@ -45,26 +48,7 @@ export default async function page(){
                                     <Button asChild variant="link">
                                         <Link href={`/categories/edit/${category.id}`}>Editar</Link>
                                     </Button>                                    
-                                    {/*<Button asChild variant="link">
-                                        <Link href={`/categories/del/${category.id}`}>Apagar</Link>
-                                    </Button>*/}
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button variant="link">Apagar</Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                <AlertDialogTitle>Você tem certeza absoluta?</AlertDialogTitle>
-                                                <AlertDialogDescription>
-                                                Você deseja remover está categoria {category.name}?
-                                                </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <AlertDialogFooter>
-                                                <AlertDialogCancel>Não</AlertDialogCancel>
-                                                <AlertDialogAction>Sim</AlertDialogAction>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>
+                                    <DeleteDialog message={`Delete " ${category.name}`} id="{category.id}" actionYes={deleteCategory}></DeleteDialog>
                                 </div>
                             </TableCell>
                         </TableRow>
