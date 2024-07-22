@@ -10,6 +10,17 @@ import {
     TableBody,
     TableCell
 } from '@/components/ui/table';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger
+} from '@/components/ui/alert-dialog';
 
 export default async function page(){
     const prisma = new PrismaClient();
@@ -31,12 +42,29 @@ export default async function page(){
                             <TableCell>{category.name}</TableCell>
                             <TableCell className="text-right">
                                 <div className="flex flex-row gap-2">
-                                <Button asChild variant="link">
+                                    <Button asChild variant="link">
                                         <Link href={`/categories/edit/${category.id}`}>Editar</Link>
                                     </Button>                                    
-                                    <Button asChild variant="link">
+                                    {/*<Button asChild variant="link">
                                         <Link href={`/categories/del/${category.id}`}>Apagar</Link>
-                                    </Button>
+                                    </Button>*/}
+                                    <AlertDialog>
+                                        <AlertDialogTrigger asChild>
+                                            <Button variant="link">Apagar</Button>
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                                <AlertDialogTitle>Você tem certeza absoluta?</AlertDialogTitle>
+                                                <AlertDialogDescription>
+                                                Você deseja remover está categoria {category.name}?
+                                                </AlertDialogDescription>
+                                            </AlertDialogHeader>
+                                            <AlertDialogFooter>
+                                                <AlertDialogCancel>Não</AlertDialogCancel>
+                                                <AlertDialogAction>Sim</AlertDialogAction>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialog>
                                 </div>
                             </TableCell>
                         </TableRow>
