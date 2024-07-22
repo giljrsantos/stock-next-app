@@ -25,7 +25,27 @@ export default async function page(){
         console.log('Delete category with id', id);
 
         const prisma = new PrismaClient();
+        const category = prisma.category.findUnique({
+            where: {id}
+        })
+
+        if(!category){
+            throw new Error('Categoria não encontrada!');
+        }
+
+        const hasProducts = await prisma.product.findFirst({
+            where: {
+                categoryId: id
+            }
+        });
+
+        if(hasProducts){
+            throw new Error('A categoria tem produtos cadastrado, não pode ser apagada');
+        }
+
         await prisma.category.delete({where: {id}});
+
+
 
         redirect('/categories');
     }
