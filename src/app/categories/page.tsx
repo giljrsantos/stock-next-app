@@ -12,6 +12,7 @@ import {
     TableRow
 } from '@/components/ui/table';
 import { PrismaClient } from '@prisma/client';
+import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export default async function page(){
@@ -22,6 +23,11 @@ export default async function page(){
     async function deleteCategory(id: string) {
         'use server'
         console.log('Delete category with id', id);
+
+        const prisma = new PrismaClient();
+        await prisma.category.delete({where: {id}});
+
+        redirect('/categories');
     }
     return (
         <div>
