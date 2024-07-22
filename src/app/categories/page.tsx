@@ -22,7 +22,6 @@ export default async function page(){
 
     async function deleteCategory(id: string) {
         'use server'
-        console.log('Delete category with id', id);
 
         const prisma = new PrismaClient();
         const category = prisma.category.findUnique({
@@ -68,7 +67,7 @@ export default async function page(){
                                     <Button asChild variant="link">
                                         <Link href={`/categories/edit/${category.id}`}>Editar</Link>
                                     </Button>                                    
-                                    <DeleteDialog message={`Apagar: ${category.name}?`} id="category.id" actionYes={deleteCategory}></DeleteDialog>
+                                    <DeleteDialog message={`Apagar: ${category.name}?`} id={category.id} actionYes={deleteCategory}></DeleteDialog>
                                 </div>
                             </TableCell>
                         </TableRow>

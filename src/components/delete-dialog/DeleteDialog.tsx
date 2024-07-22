@@ -34,8 +34,10 @@ export default function DeleteDialog(props: DeleteDialogProps){
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                    <AlertDialogAction className='bg-destructive hover:bg-destructive-hover' asChild>Continuar</AlertDialogAction>
-                    <Button onClick={() => props.actionYes(props.id)}>Continuar</Button>
+                    <AlertDialogAction className='bg-destructive hover:bg-destructive-hover' asChild>
+                        <Button onClick={() => props.actionYes(props.id)}>Continuar</Button>
+                    </AlertDialogAction>
+                    
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
