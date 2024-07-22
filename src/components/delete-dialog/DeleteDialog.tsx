@@ -1,3 +1,5 @@
+'use client'
+
 import {
 AlertDialog,
 AlertDialogAction,
@@ -21,11 +23,11 @@ export default function DeleteDialog(props: DeleteDialogProps){
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="link">Delete</Button>
+                <Button variant="link">Apagar</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absoluty surer?</AlertDialogTitle>
+                    <AlertDialogTitle>Você está absolutamente certo?</AlertDialogTitle>
                     <AlertDialogDescription>
                         {props.message}
                     </AlertDialogDescription>
@@ -33,7 +35,7 @@ export default function DeleteDialog(props: DeleteDialogProps){
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancelar</AlertDialogCancel>
                     <AlertDialogAction className='bg-destructive hover:bg-destructive-hover' asChild>Continuar</AlertDialogAction>
-                    <Button onClick={() => props.actionYes(props.id)}></Button>
+                    <Button onClick={() => props.actionYes(props.id)}>Continuar</Button>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

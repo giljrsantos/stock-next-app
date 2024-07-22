@@ -42,7 +42,7 @@ export default async function page(){
                                     <Button asChild variant="link">
                                         <Link href={`/categories/edit/${category.id}`}>Editar</Link>
                                     </Button>                                    
-                                    <DeleteDialog message={`Delete " ${category.name}?`} id="category.id" actionYes={deleteCategory}></DeleteDialog>
+                                    <DeleteDialog message={`Apagar: ${category.name}?`} id="category.id" actionYes={deleteCategory}></DeleteDialog>
                                 </div>
                             </TableCell>
                         </TableRow>
