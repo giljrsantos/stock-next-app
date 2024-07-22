@@ -9,7 +9,7 @@ Esse projetoé um sistema de controle de estoque. O sistema contém as seguintes
 O banco de dados usado, SQLite e o ORM Prisma.  É a forma mais fácil
 de começar a trabalhar com dados em uma aplicação Next.
 
-### Criando a Tela Inicial de Categorias
+### Tela Inicial de Categorias
 
 <img src="./src/assets//image/2.png" width="100%">
 
