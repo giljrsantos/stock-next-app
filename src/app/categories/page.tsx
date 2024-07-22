@@ -1,34 +1,28 @@
-'use client'
 
+
+import DeleteDialog from "@/components/delete-dialog/DeleteDialog";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { PrismaClient } from '@prisma/client';
 import {
     Table,
-    TableCaption,
-    TableHeader,
-    TableRow,
-    TableHead,
     TableBody,
-    TableCell
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow
 } from '@/components/ui/table';
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger
-} from '@/components/ui/alert-dialog';
-import DeleteDialog from "@/components/delete-dialog/DeleteDialog";
+import { PrismaClient } from '@prisma/client';
+import Link from "next/link";
 
 export default async function page(){
     const prisma = new PrismaClient();
 
     const categories = await prisma.category.findMany()
+
+    async function deleteCategory(id: string) {
+        'use server'
+        console.log('Delete category with id', id);
+    }
     return (
         <div>
             <Table>
@@ -48,7 +42,7 @@ export default async function page(){
                                     <Button asChild variant="link">
                                         <Link href={`/categories/edit/${category.id}`}>Editar</Link>
                                     </Button>                                    
-                                    <DeleteDialog message={`Delete " ${category.name}`} id="{category.id}" actionYes={deleteCategory}></DeleteDialog>
+                                    <DeleteDialog message={`Delete " ${category.name}?`} id="category.id" actionYes={deleteCategory}></DeleteDialog>
                                 </div>
                             </TableCell>
                         </TableRow>
